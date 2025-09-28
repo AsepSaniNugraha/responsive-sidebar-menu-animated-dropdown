@@ -25,4 +25,30 @@ function closeAllSubMenus(){
         ul.classList.remove("show");
         ul.previousElementSibling.classList.remove("rotate");
     })
+};
+
+const toggle = document.getElementById("toggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "active") {
+  document.body.classList.add("theme");
+  toggle.checked = true;
 }
+
+const enableTheme = () => {
+  document.body.classList.add("theme");
+  localStorage.setItem("theme", "active");
+};
+
+const disableTheme = () => {
+  document.body.classList.remove("theme");
+  localStorage.removeItem("theme");
+};
+
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    enableTheme();
+  } else {
+    disableTheme();
+  }
+});

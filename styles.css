@@ -6,13 +6,75 @@
     --accent-clr: #5e63ff;
     --secondary-text-clr: #b0b3c1;
 }
-*{
+.theme{
+    --base-clr: #e6e6ef;
+    --line-clr: #b0b3c1;
+    --hover-clr: #7e7f83;
+    --text-clr: #11121a;
+    --accent-clr: #5e63ff;
+    --secondary-text-clr: #42434a;
+}
+*, :before, :after{
     margin: 0;
     padding: 0;
 }
 html{
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5rem;
+}
+.toggle-box{
+    display: flex;
+    margin-left: auto;
+    max-width: max-content;
+    max-height: max-content;
+    margin-block-end: 2rem;
+}
+.toggle{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.toggle input{
+    display: none;
+}
+.toggle-fill{
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: var(--line-clr);
+    border-radius: 25px;
+}
+.toggle-fill::after{
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hover-clr);
+    width: 23px;
+    height: 23px;
+    border-radius: 12px;
+    transition: all .2s ease-in-out;
+}
+.toggle input:checked ~ .toggle-fill::after{
+    left: 25px;
+    background-color: white;
+}
+.toggle input:checked ~ .toggle-fill{
+    background-color: var(--accent-clr);
+}
+.toggle-text .text{
+    margin: 0;
+    padding: 0;
+}
+.toggle input:checked ~ .toggle-text .text::after{
+    content: "Dark";
+}
+.toggle-text .text::after{
+    content: "Light";
+    margin-inline-start: 1rem;
 }
 body{
     min-height: 100vh;
